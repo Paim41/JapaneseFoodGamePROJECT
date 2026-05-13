@@ -511,7 +511,7 @@ function showMemoryResult(won) {
 const SPOT_DIFFERENCES = [
   { x: 0.33, y: 0.48, label: 'Changed item on top-left plate' },
   { x: 0.70, y: 0.16, label: 'Pattern missing from middle lantern' },
-  { x: 0.17, y: 0.48, label: 'Different dessert food on left edge' },
+  { x: 0.14, y: 0.48, label: 'Different dessert food on left edge' },
   { x: 0.48, y: 0.78, label: 'Different selection of items on bottom plate' },
   { x: 0.72, y: 0.76, label: 'Missing chopstick rest' },
 ];
