@@ -543,7 +543,7 @@ function renderSpot() {
     </div>
     <div class="spot-images">
       <div class="spot-img-wrap" id="spotLeft" onclick="spotClick(event, 'left')">
-        <img src="https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=700&q=80" alt="Original" id="spotImgLeft" draggable="false"/>
+        <img src="https://6a04719546fc04f7c2e1aca4.imgix.net/JapaneseFoodSPOT/1.png?w=700&h=875" alt="Original" id="spotImgLeft" draggable="false"/>
         <!-- Markers for found differences on left -->
         ${spotState.found.map(i => `
           <div class="spot-marker correct" style="left:${SPOT_DIFFERENCES[i].x * 100}%;top:${SPOT_DIFFERENCES[i].y * 100}%"></div>
@@ -551,7 +551,7 @@ function renderSpot() {
         <div style="position:absolute;bottom:6px;left:8px;background:rgba(0,0,0,0.5);color:white;font-size:0.7rem;padding:2px 8px;border-radius:4px">Original</div>
       </div>
       <div class="spot-img-wrap" id="spotRight" onclick="spotClick(event, 'right')">
-        <img src="https://images.unsplash.com/photo-1553621042-f6e147245754?w=700&q=80" alt="Modified" id="spotImgRight" draggable="false"/>
+        <img src="https://6a04719546fc04f7c2e1aca4.imgix.net/JapaneseFoodSPOT/2.png?w=700&h=875" alt="Modified" id="spotImgRight" draggable="false"/>
         <!-- Markers for found differences on right -->
         ${spotState.found.map(i => `
           <div class="spot-marker correct" style="left:${SPOT_DIFFERENCES[i].x * 100}%;top:${SPOT_DIFFERENCES[i].y * 100}%"></div>
