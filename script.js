@@ -307,14 +307,14 @@ function renderQuizResult() {
 // ===================================
 
 const memoryImages = [
-  { id: 1, url: 'https://images.unsplash.com/photo-1553621042-f6e147245754?w=200&q=80', name: 'Sushi' },
+  { id: 1, url: 'https://6a04719546fc04f7c2e1aca4.imgix.net/JapaneseFood/MISO.png?w=2000&h=2000', name: 'Miso' },
   { id: 2, url: 'https://6a04719546fc04f7c2e1aca4.imgix.net/JapaneseFood/download?w=2000&h=2000', name: 'Takoyaki' },
-  { id: 3, url: 'https://images.unsplash.com/photo-1547592166-23ac45744acd?w=200&q=80', name: 'Tempura' },
-  { id: 4, url: 'https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=200&q=80', name: 'Chirashi' },
-  { id: 5, url: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=200&q=80', name: 'Mochi' },
-  { id: 6, url: 'https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?w=200&q=80', name: 'Matcha' },
-  { id: 7, url: 'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=200&q=80', name: 'Onigiri' },
-  { id: 8, url: 'https://images.unsplash.com/photo-1574484284002-952d92456975?w=200&q=80', name: 'Gyoza' },
+  { id: 3, url: 'https://6a04719546fc04f7c2e1aca4.imgix.net/JapaneseFood/TEMPURA.png?w=2000&h=2000', name: 'Tempura' },
+  { id: 4, url: 'https://6a04719546fc04f7c2e1aca4.imgix.net/JapaneseFood/MOCHI.png?w=2000&h=2000', name: 'Mochi' },
+  { id: 5, url: 'https://6a04719546fc04f7c2e1aca4.imgix.net/JapaneseFood/OKONOMIYAKI.png?w=2000&h=2000', name: 'Okonomiyaki' },
+  { id: 6, url: 'https://6a04719546fc04f7c2e1aca4.imgix.net/JapaneseFood/ONIGIRI.png?w=2000&h=2000', name: 'Onigiri' },
+  { id: 7, url: 'https://6a04719546fc04f7c2e1aca4.imgix.net/JapaneseFood/RAMEN.png?w=2000&h=2000', name: 'Ramen' },
+  { id: 8, url: 'https://6a04719546fc04f7c2e1aca4.imgix.net/JapaneseFood/SUSHI.png?w=2000&h=2000', name: 'Shushi' },
 ];
 
 let memoryState = {
