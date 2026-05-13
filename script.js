@@ -176,31 +176,31 @@ function onGameWon(type) {
 
 const quizData = [
   {
-    image: 'https://images.unsplash.com/photo-1553621042-f6e147245754?w=600&q=80',
+    image: 'https://6a04719546fc04f7c2e1aca4.imgix.net/JapaneseFood/SUSHI.png?w=2000&h=2000',
     question: 'What is this Japanese food?',
-    options: ['Sashimi', 'Nigiri Sushi', 'Onigiri', 'Maki Roll'],
-    answer: 1,
+    options: ['Dango', 'Dorayaki', 'Sushi', 'Mochi'],
+    answer: 2,
   },
   {
-    image: 'https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=600&q=80',
-    question: 'What is this colorful sushi platter called?',
-    options: ['Chirashi Don', 'Omakase Set', 'Kaiseki', 'Bento'],
-    answer: 0,
+    image: 'https://6a04719546fc04f7c2e1aca4.imgix.net/JapaneseFood/ONIGIRI.png?w=2000&h=2000',
+    question: 'What is this this food?',
+    options: ['Sushi', 'Ramen', 'Takoyaki', 'Onigiri'],
+    answer: 3,
   },
   {
-    image: 'https://images.unsplash.com/photo-1617196034183-421b4040ed20?w=600&q=80',
+    image: 'https://6a04719546fc04f7c2e1aca4.imgix.net/JapaneseFood/RAMEN.png?w=2000&h=2000',
     question: 'This noodle soup dish is called?',
     options: ['Udon', 'Soba', 'Ramen', 'Pho'],
     answer: 2,
   },
   {
-    image: 'https://images.unsplash.com/photo-1547592166-23ac45744acd?w=600&q=80',
+    image: 'https://6a04719546fc04f7c2e1aca4.imgix.net/JapaneseFood/TEMPURA.png?w=2000&h=2000',
     question: 'What is this traditional Japanese dish?',
     options: ['Tempura', 'Tonkatsu', 'Karaage', 'Gyoza'],
     answer: 0,
   },
   {
-    image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&q=80',
+    image: 'https://6a04719546fc04f7c2e1aca4.imgix.net/JapaneseFood/MOCHI.png?w=2000&h=2000',
     question: 'This round-shaped item is a popular Japanese?',
     options: ['Daifuku', 'Dorayaki', 'Mochi', 'Wagashi'],
     answer: 2,
