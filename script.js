@@ -509,11 +509,11 @@ function showMemoryResult(won) {
 // with programmable differences
 
 const SPOT_DIFFERENCES = [
-  { x: 0.18, y: 0.22, label: 'Missing cherry blossom' },
-  { x: 0.72, y: 0.35, label: 'Color of bowl changed' },
-  { x: 0.45, y: 0.65, label: 'Extra chopstick' },
-  { x: 0.28, y: 0.75, label: 'Missing sesame seeds' },
-  { x: 0.62, y: 0.20, label: 'Different plate pattern' },
+  { x: 0.33, y: 0.48, label: 'Changed item on top-left plate' },
+  { x: 0.70, y: 0.16, label: 'Pattern missing from middle lantern' },
+  { x: 0.88, y: 0.46, label: 'Different shape of takoyaki plate' },
+  { x: 0.48, y: 0.78, label: 'Different selection of items on bottom plate' },
+  { x: 0.72, y: 0.76, label: 'Missing chopstick rest' },
 ];
 
 let spotState = {
