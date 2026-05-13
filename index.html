@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Washoku World – Japanese Food Minigames</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="#home" class="nav-logo">
+        <svg class="logo-mon" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="20" r="18" fill="var(--red)" />
+          <circle cx="20" cy="20" r="10" fill="none" stroke="white" stroke-width="2"/>
+          <line x1="20" y1="2" x2="20" y2="38" stroke="white" stroke-width="1.5" opacity="0.4"/>
+          <line x1="2" y1="20" x2="38" y2="20" stroke="white" stroke-width="1.5" opacity="0.4"/>
+        </svg>
+        <span class="logo-text">Washoku<span>World</span></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li><a href="#games" class="nav-link">Games</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+      </ul>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/>
+          <line x1="12" y1="1" x2="12" y2="3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <line x1="12" y1="21" x2="12" y2="23" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <line x1="1" y1="12" x2="3" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <line x1="21" y1="12" x2="23" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#home" class="mobile-link">Home</a>
+      <a href="#games" class="mobile-link">Games</a>
+      <a href="#about" class="mobile-link">About</a>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="home">
+    <div class="hero-bg">
+      <!-- Seigaiha wave pattern via SVG -->
+      <svg class="seigaiha-bg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <pattern id="seigaiha" x="0" y="0" width="60" height="40" patternUnits="userSpaceOnUse">
+            <path d="M30 0 Q0 0 0 20 Q0 40 30 40 Q60 40 60 20 Q60 0 30 0 Z" fill="none" stroke="var(--red)" stroke-width="1" opacity="0.12"/>
+            <path d="M0 20 Q0 40 30 40 Q60 40 60 20" fill="none" stroke="var(--red)" stroke-width="1" opacity="0.08"/>
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#seigaiha)"/>
+      </svg>
+      <!-- Sakura petals -->
+      <div class="sakura-container" id="sakuraContainer"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <svg viewBox="0 0 16 16" fill="currentColor"><circle cx="8" cy="8" r="6"/></svg>
+        Japanese Food Adventure
+      </div>
+      <h1 class="hero-title">
+        <span class="jp-title">和食</span>
+        <span class="en-title">Washoku World</span>
+      </h1>
+      <p class="hero-sub">Explore the rich flavors of Japan through fun, interactive minigames. Test your knowledge, train your memory, and sharpen your eye.</p>
+      <div class="hero-ctas">
+        <a href="#games" class="btn btn-primary">
+          <svg viewBox="0 0 24 24" fill="none"><polygon points="5,3 19,12 5,21" fill="currentColor"/></svg>
+          Play Now
+        </a>
+        <a href="#about" class="btn btn-ghost">Learn More</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-num">3</span><span class="stat-label">Games</span></div>
+        <div class="stat-div"></div>
+        <div class="stat"><span class="stat-num">15+</span><span class="stat-label">Food Items</span></div>
+        <div class="stat-div"></div>
+        <div class="stat"><span class="stat-num">🍬</span><span class="stat-label">Rewards</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="food-orb">
+        <img src="https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=400&q=80" alt="Sushi" />
+        <div class="orb-ring"></div>
+        <div class="orb-ring orb-ring-2"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GAMES SECTION ===== -->
+  <section class="games-section" id="games">
+    <div class="section-header">
+      <p class="section-tag">遊ぶ · Play</p>
+      <h2 class="section-title">Choose Your Game</h2>
+      <p class="section-desc">Win any game to earn a free candy reward!</p>
+    </div>
+    <div class="game-cards">
+
+      <!-- Quiz Card -->
+      <div class="game-card" id="cardQuiz" data-game="quiz">
+        <div class="card-thumb">
+          <img src="https://images.unsplash.com/photo-1553621042-f6e147245754?w=500&q=80" alt="Quiz" />
+          <div class="card-overlay">
+            <svg class="play-icon" viewBox="0 0 60 60" fill="none">
+              <circle cx="30" cy="30" r="28" stroke="white" stroke-width="2" fill="rgba(188,0,45,0.8)"/>
+              <polygon points="22,18 46,30 22,42" fill="white"/>
+            </svg>
+          </div>
+          <div class="card-badge">Quiz</div>
+        </div>
+        <div class="card-body">
+          <h3>Guess the Food</h3>
+          <p>Identify Japanese dishes from photos. 5 questions, score 4/5 to win!</p>
+          <div class="card-meta">
+            <span><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/><polyline points="8,5 8,8 10,10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg> ~3 min</span>
+            <span><svg viewBox="0 0 16 16" fill="none"><path d="M8 2 L9.6 6.4 L14 6.4 L10.7 9.1 L11.9 13.4 L8 10.8 L4.1 13.4 L5.3 9.1 L2 6.4 L6.4 6.4 Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg> Easy</span>
+          </div>
+          <button class="btn btn-primary btn-full" onclick="openGame('quiz')">Play Quiz</button>
+        </div>
+      </div>
+
+      <!-- Memory Card -->
+      <div class="game-card featured" id="cardMemory" data-game="memory">
+        <div class="card-featured-tag">Popular</div>
+        <div class="card-thumb">
+          <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?w=500&q=80" alt="Memory" />
+          <div class="card-overlay">
+            <svg class="play-icon" viewBox="0 0 60 60" fill="none">
+              <circle cx="30" cy="30" r="28" stroke="white" stroke-width="2" fill="rgba(188,0,45,0.8)"/>
+              <polygon points="22,18 46,30 22,42" fill="white"/>
+            </svg>
+          </div>
+          <div class="card-badge">Memory</div>
+        </div>
+        <div class="card-body">
+          <h3>Flip Card Memory</h3>
+          <p>Match all pairs before the 60-second timer runs out!</p>
+          <div class="card-meta">
+            <span><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/><polyline points="8,5 8,8 10,10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg> 60 sec</span>
+            <span><svg viewBox="0 0 16 16" fill="none"><path d="M8 2 L9.6 6.4 L14 6.4 L10.7 9.1 L11.9 13.4 L8 10.8 L4.1 13.4 L5.3 9.1 L2 6.4 L6.4 6.4 Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg> Medium</span>
+          </div>
+          <button class="btn btn-primary btn-full" onclick="openGame('memory')">Play Memory</button>
+        </div>
+      </div>
+
+      <!-- Spot Difference Card -->
+      <div class="game-card" id="cardSpot" data-game="spot">
+        <div class="card-thumb">
+          <img src="https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=500&q=80" alt="Spot Difference" />
+          <div class="card-overlay">
+            <svg class="play-icon" viewBox="0 0 60 60" fill="none">
+              <circle cx="30" cy="30" r="28" stroke="white" stroke-width="2" fill="rgba(188,0,45,0.8)"/>
+              <polygon points="22,18 46,30 22,42" fill="white"/>
+            </svg>
+          </div>
+          <div class="card-badge">Spot</div>
+        </div>
+        <div class="card-body">
+          <h3>Spot the Difference</h3>
+          <p>Find all 5 differences between two Japanese food scenes!</p>
+          <div class="card-meta">
+            <span><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/><polyline points="8,5 8,8 10,10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg> ~5 min</span>
+            <span><svg viewBox="0 0 16 16" fill="none"><path d="M8 2 L9.6 6.4 L14 6.4 L10.7 9.1 L11.9 13.4 L8 10.8 L4.1 13.4 L5.3 9.1 L2 6.4 L6.4 6.4 Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg> Hard</span>
+          </div>
+          <button class="btn btn-primary btn-full" onclick="openGame('spot')">Play Spot</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="about-section" id="about">
+    <div class="about-inner">
+      <div class="about-text">
+        <p class="section-tag">について · About</p>
+        <h2>Celebrating Washoku</h2>
+        <p>Washoku (和食) — Japanese traditional cuisine — is a UNESCO Intangible Cultural Heritage. It celebrates seasonal ingredients, natural flavors, and beautiful presentation.</p>
+        <p>Washoku World brings the joy of Japanese food culture to life through interactive games. Learn the names, appearances, and stories behind beloved dishes.</p>
+        <div class="about-pills">
+          <span class="pill">寿司 Sushi</span>
+          <span class="pill">ラーメン Ramen</span>
+          <span class="pill">天ぷら Tempura</span>
+          <span class="pill">抹茶 Matcha</span>
+          <span class="pill">たこ焼き Takoyaki</span>
+        </div>
+      </div>
+      <div class="about-visual">
+        <div class="about-img-stack">
+          <img class="about-img about-img-1" src="https://images.unsplash.com/photo-1617196034183-421b4040ed20?w=400&q=80" alt="Ramen" />
+          <img class="about-img about-img-2" src="https://images.unsplash.com/photo-1553621042-f6e147245754?w=400&q=80" alt="Sushi" />
+          <div class="about-tag">和食</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <svg class="logo-mon-sm" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="20" r="18" fill="var(--red)" />
+          <circle cx="20" cy="20" r="10" fill="none" stroke="white" stroke-width="2"/>
+        </svg>
+        <span>Washoku World</span>
+      </div>
+      <p class="footer-copy">A love letter to Japanese cuisine.</p>
+      <div class="footer-links">
+        <a href="https://github.com/Paim41" target="_blank" rel="noopener" class="footer-link" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z" fill="currentColor"/>
+          </svg>
+          GitHub
+        </a>
+        <a href="https://www.instagram.com/paim41/" target="_blank" rel="noopener" class="footer-link" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="currentColor" stroke-width="2"/>
+            <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+            <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/>
+          </svg>
+          Instagram
+        </a>
+      </div>
+      <p class="footer-made">Made with <svg class="heart-icon" viewBox="0 0 16 16" fill="var(--red)"><path d="M8 14s-6-3.9-6-8a4 4 0 0 1 8 0 4 4 0 0 1 8 0c0 4.1-6 8-6 8z"/></svg> for Japanese food lovers</p>
+    </div>
+  </footer>
+
+  <!-- ===== GAME MODALS ===== -->
+
+  <!-- QUIZ MODAL -->
+  <div class="game-modal" id="quizModal">
+    <div class="modal-backdrop" onclick="closeGame('quiz')"></div>
+    <div class="modal-panel">
+      <button class="modal-close" onclick="closeGame('quiz')">
+        <svg viewBox="0 0 24 24" fill="none"><line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <div class="modal-content" id="quizContent">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- MEMORY MODAL -->
+  <div class="game-modal" id="memoryModal">
+    <div class="modal-backdrop" onclick="closeGame('memory')"></div>
+    <div class="modal-panel modal-panel-wide">
+      <button class="modal-close" onclick="closeGame('memory')">
+        <svg viewBox="0 0 24 24" fill="none"><line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <div class="modal-content" id="memoryContent">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- SPOT MODAL -->
+  <div class="game-modal" id="spotModal">
+    <div class="modal-backdrop" onclick="closeGame('spot')"></div>
+    <div class="modal-panel modal-panel-wide">
+      <button class="modal-close" onclick="closeGame('spot')">
+        <svg viewBox="0 0 24 24" fill="none"><line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <div class="modal-content" id="spotContent">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== REWARD MODAL ===== -->
+  <div class="reward-modal" id="rewardModal">
+    <div class="reward-backdrop" onclick="closeReward()"></div>
+    <div class="reward-panel" id="rewardPanel">
+      <div class="reward-confetti" id="rewardConfetti"></div>
+      <div class="reward-icon" id="rewardIcon">🍬</div>
+      <h2 id="rewardTitle">Congratulations!</h2>
+      <p id="rewardMsg">You got 1 FREE candy!</p>
+      <div class="reward-candy" id="rewardCandy">
+        <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="40" cy="40" r="30" fill="#BC002D"/>
+          <circle cx="40" cy="40" r="20" fill="white"/>
+          <circle cx="40" cy="40" r="10" fill="#BC002D"/>
+          <line x1="40" y1="10" x2="40" y2="0" stroke="#BC002D" stroke-width="6" stroke-linecap="round"/>
+          <line x1="43" y1="4" x2="50" y2="4" stroke="#BC002D" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <button class="btn btn-primary" onclick="closeReward()">Yummy! Thanks!</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
