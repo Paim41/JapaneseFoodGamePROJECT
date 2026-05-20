@@ -202,7 +202,7 @@ const quizData = [
   {
     image: 'https://6a04719546fc04f7c2e1aca4.imgix.net/JapaneseFood/MOCHI.png?w=2000&h=2000',
     question: 'This round-shaped item is a popular Japanese?',
-    options: ['Daifuku', 'Dorayaki', 'Mochi', 'Wagashi'],
+    options: ['Daifuku', 'Dorayaki', 'Dango', 'Wagashi'],
     answer: 2,
   },
 ];
