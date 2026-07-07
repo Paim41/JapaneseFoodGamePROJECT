@@ -1,311 +1,666 @@
-<!DOCTYPE html>
-<html lang="en" data-theme="light">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Washoku World – Japanese Food Minigames</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
+/* ============================================
+   WASHOKU WORLD – script.js
+   Japanese Food Minigame Website
+   ============================================ */
 
-  <!-- ===== NAVBAR ===== -->
-  <nav class="navbar" id="navbar">
-    <div class="nav-inner">
-      <a href="#home" class="nav-logo">
-        <svg class="logo-mon" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="20" cy="20" r="18" fill="var(--red)" />
-          <circle cx="20" cy="20" r="10" fill="none" stroke="white" stroke-width="2"/>
-          <line x1="20" y1="2" x2="20" y2="38" stroke="white" stroke-width="1.5" opacity="0.4"/>
-          <line x1="2" y1="20" x2="38" y2="20" stroke="white" stroke-width="1.5" opacity="0.4"/>
-        </svg>
-        <span class="logo-text">Washoku<span>World</span></span>
-      </a>
-      <ul class="nav-links">
-        <li><a href="#home" class="nav-link active">Home</a></li>
-        <li><a href="#games" class="nav-link">Games</a></li>
-        <li><a href="#about" class="nav-link">About</a></li>
-      </ul>
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/>
-          <line x1="12" y1="1" x2="12" y2="3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <line x1="12" y1="21" x2="12" y2="23" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <line x1="1" y1="12" x2="3" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <line x1="21" y1="12" x2="23" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </button>
-      <button class="hamburger" id="hamburger" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-    <div class="mobile-menu" id="mobileMenu">
-      <a href="#home" class="mobile-link">Home</a>
-      <a href="#games" class="mobile-link">Games</a>
-      <a href="#about" class="mobile-link">About</a>
-    </div>
-  </nav>
+// ===== THEME TOGGLE =====
+const themeToggle = document.getElementById('themeToggle');
+const html = document.documentElement;
 
-  <!-- ===== HERO ===== -->
-  <section class="hero" id="home">
-    <div class="hero-bg">
-      <!-- Seigaiha wave pattern via SVG -->
-      <svg class="seigaiha-bg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-        <defs>
-          <pattern id="seigaiha" x="0" y="0" width="60" height="40" patternUnits="userSpaceOnUse">
-            <path d="M30 0 Q0 0 0 20 Q0 40 30 40 Q60 40 60 20 Q60 0 30 0 Z" fill="none" stroke="var(--red)" stroke-width="1" opacity="0.12"/>
-            <path d="M0 20 Q0 40 30 40 Q60 40 60 20" fill="none" stroke="var(--red)" stroke-width="1" opacity="0.08"/>
-          </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#seigaiha)"/>
-      </svg>
-      <!-- Sakura petals -->
-      <div class="sakura-container" id="sakuraContainer"></div>
-    </div>
-    <div class="hero-content">
-      <div class="hero-badge">
-        <svg viewBox="0 0 16 16" fill="currentColor"><circle cx="8" cy="8" r="6"/></svg>
-        Japanese Food Adventure
-      </div>
-      <h1 class="hero-title">
-        <span class="jp-title">和食</span>
-        <span class="en-title">Washoku World</span>
-      </h1>
-      <p class="hero-sub">Explore the rich flavors of Japan through fun, interactive minigames. Test your knowledge, train your memory, and sharpen your eye.</p>
-      <div class="hero-ctas">
-        <a href="#games" class="btn btn-primary">
-          <svg viewBox="0 0 24 24" fill="none"><polygon points="5,3 19,12 5,21" fill="currentColor"/></svg>
-          Play Now
-        </a>
-        <a href="#about" class="btn btn-ghost">Learn More</a>
-      </div>
-      <div class="hero-stats">
-        <div class="stat"><span class="stat-num">3</span><span class="stat-label">Games</span></div>
-        <div class="stat-div"></div>
-        <div class="stat"><span class="stat-num">15+</span><span class="stat-label">Food Items</span></div>
-        <div class="stat-div"></div>
-        <div class="stat"><span class="stat-num">🍬</span><span class="stat-label">Rewards</span></div>
-      </div>
-    </div>
-    <div class="hero-visual">
-      <div class="food-orb">
-        <img src="https://6a04719546fc04f7c2e1aca4.imgix.net/JapaneseFoodLOGO/_LOGO.png?w=2000&h=2000" alt="Logo" />
-        <div class="orb-ring"></div>
-        <div class="orb-ring orb-ring-2"></div>
-      </div>
-    </div>
-  </section>
+// Load saved theme
+const savedTheme = localStorage.getItem('washoku-theme') || 'light';
+html.setAttribute('data-theme', savedTheme);
 
-  <!-- ===== GAMES SECTION ===== -->
-  <section class="games-section" id="games">
-    <div class="section-header">
-      <p class="section-tag">遊ぶ · Play</p>
-      <h2 class="section-title">Choose Your Game</h2>
-      <p class="section-desc">Win any game to earn a free candy reward!</p>
-    </div>
-    <div class="game-cards">
+themeToggle.addEventListener('click', () => {
+  const current = html.getAttribute('data-theme');
+  const next = current === 'light' ? 'dark' : 'light';
+  html.setAttribute('data-theme', next);
+  localStorage.setItem('washoku-theme', next);
+});
 
-      <!-- Quiz Card -->
-      <div class="game-card" id="cardQuiz" data-game="quiz">
-        <div class="card-thumb">
-          <img src="https://6a04719546fc04f7c2e1aca4.imgix.net/JapanessFoodGUESS/Guess%20The%20Food.jpg?w=1920&h=1080" alt="Quiz" />
-          <div class="card-overlay">
-            <svg class="play-icon" viewBox="0 0 60 60" fill="none">
-              <circle cx="30" cy="30" r="28" stroke="white" stroke-width="2" fill="rgba(188,0,45,0.8)"/>
-              <polygon points="22,18 46,30 22,42" fill="white"/>
-            </svg>
+// ===== NAVBAR SCROLL =====
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// ===== HAMBURGER MENU =====
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+
+hamburger.addEventListener('click', () => {
+  mobileMenu.classList.toggle('open');
+});
+
+// Close mobile menu on link click
+document.querySelectorAll('.mobile-link').forEach(link => {
+  link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+});
+
+// ===== ACTIVE NAV LINK =====
+const sections = document.querySelectorAll('section[id]');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 200) current = s.getAttribute('id');
+  });
+  document.querySelectorAll('.nav-link').forEach(l => {
+    l.classList.toggle('active', l.getAttribute('href') === '#' + current);
+  });
+});
+
+// ===== SAKURA PETALS =====
+const sakuraContainer = document.getElementById('sakuraContainer');
+
+function createSakura() {
+  const petal = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  petal.setAttribute('viewBox', '0 0 20 20');
+  petal.setAttribute('width', '12');
+  petal.setAttribute('height', '12');
+  petal.innerHTML = `<path d="M10 1 C10 1 14 5 10 10 C6 5 10 1 10 1Z M10 1 C10 1 15 4 13 9 C8 7 10 1 10 1Z M10 1 C10 1 16 7 12 11 C8 8 10 1 10 1Z M10 10 C10 10 10 16 10 18 C10 16 10 10 10 10Z" fill="rgba(188,0,45,0.5)"/>`;
+
+  const div = document.createElement('div');
+  div.className = 'sakura';
+  div.appendChild(petal);
+
+  const startX = Math.random() * window.innerWidth;
+  const duration = 6 + Math.random() * 8;
+  const delay = Math.random() * 10;
+  const size = 8 + Math.random() * 14;
+
+  div.style.cssText = `
+    left: ${startX}px;
+    width: ${size}px;
+    height: ${size}px;
+    animation-duration: ${duration}s;
+    animation-delay: ${delay}s;
+  `;
+
+  sakuraContainer.appendChild(div);
+  setTimeout(() => div.remove(), (duration + delay) * 1000);
+}
+
+// Create sakura petals periodically
+setInterval(createSakura, 800);
+for (let i = 0; i < 8; i++) createSakura(); // Initial burst
+
+// ===== GAME STATE =====
+const gameState = {
+  quiz: { completed: false, won: false },
+  memory: { completed: false, won: false },
+  spot: { completed: false, won: false },
+};
+
+// ===== GAME MODAL CONTROL =====
+function openGame(type) {
+  const modal = document.getElementById(type + 'Modal');
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+
+  if (type === 'quiz') initQuiz();
+  if (type === 'memory') initMemory();
+  if (type === 'spot') initSpot();
+}
+
+function closeGame(type) {
+  const modal = document.getElementById(type + 'Modal');
+  modal.classList.remove('open');
+  document.body.style.overflow = '';
+
+  if (type === 'memory') stopMemoryTimer();
+}
+
+// ===== REWARD SYSTEM =====
+function showReward(allComplete) {
+  const modal = document.getElementById('rewardModal');
+  const title = document.getElementById('rewardTitle');
+  const msg = document.getElementById('rewardMsg');
+  const icon = document.getElementById('rewardIcon');
+
+  if (allComplete) {
+    title.textContent = 'Amazing!';
+    msg.textContent = 'You completed all 3 games! Enjoy your FREE candy!';
+    icon.textContent = '🎉';
+  } else {
+    title.textContent = 'Congratulations!';
+    msg.textContent = 'You got 1 FREE candy! Keep playing for more rewards!';
+    icon.textContent = '🍬';
+  }
+
+  modal.classList.add('open');
+  spawnConfetti();
+}
+
+function closeReward() {
+  document.getElementById('rewardModal').classList.remove('open');
+}
+
+function spawnConfetti() {
+  const container = document.getElementById('rewardConfetti');
+  container.innerHTML = '';
+  const colors = ['#BC002D', '#ffffff', '#FFD700', '#FF6B6B', '#4ECDC4', '#45B7D1'];
+
+  for (let i = 0; i < 40; i++) {
+    const piece = document.createElement('div');
+    piece.className = 'confetti-piece';
+    piece.style.cssText = `
+      left: ${Math.random() * 100}%;
+      background: ${colors[Math.floor(Math.random() * colors.length)]};
+      animation-duration: ${1 + Math.random() * 1.5}s;
+      animation-delay: ${Math.random() * 0.5}s;
+      width: ${6 + Math.random() * 8}px;
+      height: ${6 + Math.random() * 8}px;
+      border-radius: ${Math.random() > 0.5 ? '50%' : '2px'};
+    `;
+    container.appendChild(piece);
+  }
+}
+
+function checkAllGamesComplete() {
+  const allWon = Object.values(gameState).every(g => g.won);
+  if (allWon) {
+    setTimeout(() => showReward(true), 600);
+  }
+}
+
+function onGameWon(type) {
+  gameState[type].won = true;
+  gameState[type].completed = true;
+  setTimeout(() => showReward(false), 800);
+  checkAllGamesComplete();
+}
+
+// ===================================
+// ===== QUIZ GAME ===================
+// ===================================
+
+const quizData = [
+  {
+    image: 'assets/SUSHI.png',
+    question: 'What is this Japanese food?',
+    options: ['Dango', 'Dorayaki', 'Sushi', 'Mochi'],
+    answer: 2,
+  },
+  {
+    image: 'assets/ONIGIRI.png',
+    question: 'What is this this food?',
+    options: ['Sushi', 'Ramen', 'Takoyaki', 'Onigiri'],
+    answer: 3,
+  },
+  {
+    image: 'assets/RAMEN.png',
+    question: 'This noodle soup dish is called?',
+    options: ['Udon', 'Soba', 'Ramen', 'Pho'],
+    answer: 2,
+  },
+  {
+    image: 'assets/TEMPURA.png',
+    question: 'What is this traditional Japanese dish?',
+    options: ['Tempura', 'Tonkatsu', 'Karaage', 'Gyoza'],
+    answer: 0,
+  },
+  {
+    image: 'assets/MOCHI.png',
+    question: 'This round-shaped item is a popular Japanese?',
+    options: ['Daifuku', 'Dorayaki', 'Dango', 'Wagashi'],
+    answer: 2,
+  },
+];
+
+let quizState = {
+  current: 0,
+  score: 0,
+  answered: false,
+};
+
+function initQuiz() {
+  quizState = { current: 0, score: 0, answered: false };
+  renderQuizQuestion();
+}
+
+function renderQuizQuestion() {
+  const content = document.getElementById('quizContent');
+  const q = quizData[quizState.current];
+  const total = quizData.length;
+  const pct = (quizState.current / total) * 100;
+
+  content.innerHTML = `
+    <div class="quiz-header">
+      <h2>Guess the Food</h2>
+      <div class="quiz-progress">
+        <span style="font-size:0.82rem;color:var(--text-3)">Q${quizState.current + 1}/${total}</span>
+        <div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
+        <span class="quiz-score-display">Score: ${quizState.score}</span>
+      </div>
+    </div>
+    <img class="quiz-img" src="${q.image}" alt="Food Question" />
+    <p class="quiz-question">${q.question}</p>
+    <div class="quiz-options">
+      ${q.options.map((opt, i) => `
+        <button class="quiz-option" onclick="selectQuizOption(${i})" id="qopt-${i}">
+          ${opt}
+        </button>
+      `).join('')}
+    </div>
+    <div class="quiz-feedback" id="quizFeedback"></div>
+    <button class="btn btn-primary btn-full quiz-next" id="quizNext" onclick="quizNext()">${quizState.current < total - 1 ? 'Next Question →' : 'See Results'}</button>
+  `;
+}
+
+function selectQuizOption(index) {
+  if (quizState.answered) return;
+  quizState.answered = true;
+
+  const q = quizData[quizState.current];
+  const feedback = document.getElementById('quizFeedback');
+  const nextBtn = document.getElementById('quizNext');
+
+  document.querySelectorAll('.quiz-option').forEach(btn => btn.disabled = true);
+
+  if (index === q.answer) {
+    document.getElementById('qopt-' + index).classList.add('correct');
+    feedback.textContent = '✓ Correct! Well done!';
+    feedback.className = 'quiz-feedback correct-fb';
+    quizState.score++;
+  } else {
+    document.getElementById('qopt-' + index).classList.add('wrong');
+    document.getElementById('qopt-' + q.answer).classList.add('correct');
+    feedback.textContent = `✗ The answer was: ${q.options[q.answer]}`;
+    feedback.className = 'quiz-feedback wrong-fb';
+  }
+
+  nextBtn.style.display = 'flex';
+}
+
+function quizNext() {
+  quizState.current++;
+  quizState.answered = false;
+
+  if (quizState.current >= quizData.length) {
+    renderQuizResult();
+  } else {
+    renderQuizQuestion();
+  }
+}
+
+function renderQuizResult() {
+  const content = document.getElementById('quizContent');
+  const won = quizState.score >= 4;
+
+  content.innerHTML = `
+    <div class="quiz-result">
+      <div class="result-icon">${won ? '🏆' : '😅'}</div>
+      <h2 class="result-title ${won ? 'win' : 'lose'}">${won ? 'You Win!' : 'Almost!'}</h2>
+      <p class="result-score">You scored <strong>${quizState.score}/5</strong>${won ? ' — Amazing knowledge!' : ' — Need 4/5 to win. Try again!'}</p>
+      <button class="btn btn-primary" onclick="initQuiz()" style="margin:0 auto">Play Again</button>
+    </div>
+  `;
+
+  if (won && !gameState.quiz.won) {
+    onGameWon('quiz');
+  }
+  gameState.quiz.completed = true;
+}
+
+// ===================================
+// ===== MEMORY GAME =================
+// ===================================
+
+const memoryImages = [
+  { id: 1, url: 'assets/MISO.png', name: 'Miso' },
+  { id: 2, url: 'assets/TAKOYAKI.png', name: 'Takoyaki' },
+  { id: 3, url: 'assets/TEMPURA.png', name: 'Tempura' },
+  { id: 4, url: 'assets/MOCHI.png', name: 'Mochi' },
+  { id: 5, url: 'assets/OKONOMIYAKI.png', name: 'Okonomiyaki' },
+  { id: 6, url: 'assets/ONIGIRI.png', name: 'Onigiri' },
+  { id: 7, url: 'assets/RAMEN.png', name: 'Ramen' },
+  { id: 8, url: 'assets/SUSHI.png', name: 'Shushi' },
+];
+
+let memoryState = {
+  cards: [],
+  flipped: [],
+  matched: [],
+  moves: 0,
+  timer: 60,
+  timerInterval: null,
+  locked: false,
+};
+
+function stopMemoryTimer() {
+  clearInterval(memoryState.timerInterval);
+}
+
+function initMemory() {
+  stopMemoryTimer();
+
+  // Create pairs from 8 images → 16 cards
+  const pairs = [...memoryImages, ...memoryImages].map((img, i) => ({
+    ...img,
+    uid: i,
+  }));
+
+  // Shuffle
+  for (let i = pairs.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [pairs[i], pairs[j]] = [pairs[j], pairs[i]];
+  }
+
+  memoryState = {
+    cards: pairs,
+    flipped: [],
+    matched: [],
+    moves: 0,
+    timer: 60,
+    timerInterval: null,
+    locked: false,
+  };
+
+  renderMemory();
+  startMemoryTimer();
+}
+
+function renderMemory() {
+  const content = document.getElementById('memoryContent');
+  content.innerHTML = `
+    <div class="memory-header">
+      <h2>Flip Card Memory</h2>
+      <div class="memory-stats">
+        <div class="mem-stat">
+          <div class="mem-stat-val" id="memTimer">60</div>
+          <div class="mem-stat-label">Seconds</div>
+        </div>
+        <div class="mem-stat">
+          <div class="mem-stat-val" id="memMoves">0</div>
+          <div class="mem-stat-label">Moves</div>
+        </div>
+        <div class="mem-stat">
+          <div class="mem-stat-val" id="memMatched">0/8</div>
+          <div class="mem-stat-label">Matched</div>
+        </div>
+      </div>
+    </div>
+    <div class="memory-grid" id="memoryGrid">
+      ${memoryState.cards.map((card, index) => `
+        <div class="mem-card" data-index="${index}" data-id="${card.id}" onclick="flipCard(${index})">
+          <div class="mem-card-inner">
+            <div class="mem-card-front">
+              <svg viewBox="0 0 40 40" fill="white">
+                <circle cx="20" cy="20" r="16" fill="none" stroke="white" stroke-width="2" opacity="0.4"/>
+                <circle cx="20" cy="20" r="8" fill="none" stroke="white" stroke-width="2" opacity="0.4"/>
+                <circle cx="20" cy="20" r="3" fill="white" opacity="0.6"/>
+              </svg>
+            </div>
+            <div class="mem-card-back">
+              <img src="${card.url}" alt="${card.name}" loading="lazy" />
+            </div>
           </div>
-          <div class="card-badge">Quiz</div>
         </div>
-        <div class="card-body">
-          <h3>Guess the Food</h3>
-          <p>Identify Japanese dishes from photos. 5 questions, score 4/5 to win!</p>
-          <div class="card-meta">
-            <span><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/><polyline points="8,5 8,8 10,10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg> ~3 min</span>
-            <span><svg viewBox="0 0 16 16" fill="none"><path d="M8 2 L9.6 6.4 L14 6.4 L10.7 9.1 L11.9 13.4 L8 10.8 L4.1 13.4 L5.3 9.1 L2 6.4 L6.4 6.4 Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg> Easy</span>
-          </div>
-          <button class="btn btn-primary btn-full" onclick="openGame('quiz')">Play Quiz</button>
-        </div>
-      </div>
-
-      <!-- Memory Card -->
-      <div class="game-card featured" id="cardMemory" data-game="memory">
-        <div class="card-featured-tag">Popular</div>
-        <div class="card-thumb">
-          <img src="https://6a04719546fc04f7c2e1aca4.imgix.net/JapaneseFoodFLIP/Flip%20Card%20Memory.jpg?w=1920&h=1080" alt="Memory" />
-          <div class="card-overlay">
-            <svg class="play-icon" viewBox="0 0 60 60" fill="none">
-              <circle cx="30" cy="30" r="28" stroke="white" stroke-width="2" fill="rgba(188,0,45,0.8)"/>
-              <polygon points="22,18 46,30 22,42" fill="white"/>
-            </svg>
-          </div>
-          <div class="card-badge">Memory</div>
-        </div>
-        <div class="card-body">
-          <h3>Flip Card Memory</h3>
-          <p>Match all pairs before the 60-second timer runs out!</p>
-          <div class="card-meta">
-            <span><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/><polyline points="8,5 8,8 10,10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg> 60 sec</span>
-            <span><svg viewBox="0 0 16 16" fill="none"><path d="M8 2 L9.6 6.4 L14 6.4 L10.7 9.1 L11.9 13.4 L8 10.8 L4.1 13.4 L5.3 9.1 L2 6.4 L6.4 6.4 Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg> Medium</span>
-          </div>
-          <button class="btn btn-primary btn-full" onclick="openGame('memory')">Play Memory</button>
-        </div>
-      </div>
-
-      <!-- Spot Difference Card -->
-      <div class="game-card" id="cardSpot" data-game="spot">
-        <div class="card-thumb">
-          <img src="https://6a04719546fc04f7c2e1aca4.imgix.net/JapaneseFoodSPOT/Spot%20the%20Difference.jpg?w=1920&h=1080" alt="Spot Difference" />
-          <div class="card-overlay">
-            <svg class="play-icon" viewBox="0 0 60 60" fill="none">
-              <circle cx="30" cy="30" r="28" stroke="white" stroke-width="2" fill="rgba(188,0,45,0.8)"/>
-              <polygon points="22,18 46,30 22,42" fill="white"/>
-            </svg>
-          </div>
-          <div class="card-badge">Spot</div>
-        </div>
-        <div class="card-body">
-          <h3>Spot the Difference</h3>
-          <p>Find all 5 differences between two Japanese food scenes!</p>
-          <div class="card-meta">
-            <span><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/><polyline points="8,5 8,8 10,10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg> ~5 min</span>
-            <span><svg viewBox="0 0 16 16" fill="none"><path d="M8 2 L9.6 6.4 L14 6.4 L10.7 9.1 L11.9 13.4 L8 10.8 L4.1 13.4 L5.3 9.1 L2 6.4 L6.4 6.4 Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg> Hard</span>
-          </div>
-          <button class="btn btn-primary btn-full" onclick="openGame('spot')">Play Spot</button>
-        </div>
-      </div>
-
+      `).join('')}
     </div>
-  </section>
-
-  <!-- ===== ABOUT ===== -->
-  <section class="about-section" id="about">
-    <div class="about-inner">
-      <div class="about-text">
-        <p class="section-tag">について · About</p>
-        <h2>Celebrating Washoku</h2>
-        <p>Washoku (和食) — Japanese traditional cuisine — is a UNESCO Intangible Cultural Heritage. It celebrates seasonal ingredients, natural flavors, and beautiful presentation.</p>
-        <p>Washoku World brings the joy of Japanese food culture to life through interactive games. Learn the names, appearances, and stories behind beloved dishes.</p>
-        <div class="about-pills">
-          <span class="pill">寿司 Sushi</span>
-          <span class="pill">ラーメン Ramen</span>
-          <span class="pill">天ぷら Tempura</span>
-          <span class="pill">抹茶 Matcha</span>
-          <span class="pill">たこ焼き Takoyaki</span>
-        </div>
-      </div>
-      <div class="about-visual">
-        <div class="about-img-stack">
-          <img class="about-img about-img-1" src="https://6a04719546fc04f7c2e1aca4.imgix.net/JapaneseFood/FOOD%201.png?w=2000&h=2000" alt="FOOD 1" />
-          <img class="about-img about-img-2" src="https://6a04719546fc04f7c2e1aca4.imgix.net/JapaneseFood/FOOD%202.png?w=2000&h=2000" alt="FOOD 2" />
-          <div class="about-tag">GP5</div>
-        </div>
-      </div>
+    <div style="text-align:center">
+      <button class="btn btn-outline" onclick="initMemory()">Restart</button>
     </div>
-  </section>
+  `;
+}
 
-  <!-- ===== FOOTER ===== -->
-  <footer class="footer">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <svg class="logo-mon-sm" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="20" cy="20" r="18" fill="var(--red)" />
-          <circle cx="20" cy="20" r="10" fill="none" stroke="white" stroke-width="2"/>
-        </svg>
-        <span>Washoku World</span>
-      </div>
-      <p class="footer-copy">A love letter to Japanese cuisine.</p>
-      <div class="footer-links">
-        <a href="https://github.com/Paim41" target="_blank" rel="noopener" class="footer-link" aria-label="GitHub">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z" fill="currentColor"/>
-          </svg>
-          GitHub
-        </a>
-        <a href="https://www.instagram.com/paim41/" target="_blank" rel="noopener" class="footer-link" aria-label="Instagram">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="currentColor" stroke-width="2"/>
-            <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
-            <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/>
-          </svg>
-          Instagram
-        </a>
-      </div>
-      <p class="footer-made">Made with <svg class="heart-icon" viewBox="0 0 16 16" fill="var(--red)"><path d="M8 14s-6-3.9-6-8a4 4 0 0 1 8 0 4 4 0 0 1 8 0c0 4.1-6 8-6 8z"/></svg> by GROUP 5</p>
+function startMemoryTimer() {
+  memoryState.timerInterval = setInterval(() => {
+    memoryState.timer--;
+    const timerEl = document.getElementById('memTimer');
+    if (timerEl) {
+      timerEl.textContent = memoryState.timer;
+      timerEl.classList.toggle('urgent', memoryState.timer <= 10);
+    }
+
+    if (memoryState.timer <= 0) {
+      stopMemoryTimer();
+      showMemoryResult(false);
+    }
+  }, 1000);
+}
+
+function flipCard(index) {
+  if (memoryState.locked) return;
+  if (memoryState.flipped.includes(index)) return;
+  if (memoryState.matched.includes(memoryState.cards[index].uid)) return;
+
+  const cardEl = document.querySelector(`.mem-card[data-index="${index}"]`);
+  cardEl.classList.add('flipped');
+  memoryState.flipped.push(index);
+
+  if (memoryState.flipped.length === 2) {
+    memoryState.moves++;
+    const movesEl = document.getElementById('memMoves');
+    if (movesEl) movesEl.textContent = memoryState.moves;
+
+    memoryState.locked = true;
+    checkMemoryMatch();
+  }
+}
+
+function checkMemoryMatch() {
+  const [i1, i2] = memoryState.flipped;
+  const card1 = memoryState.cards[i1];
+  const card2 = memoryState.cards[i2];
+
+  if (card1.id === card2.id) {
+    // Match!
+    memoryState.matched.push(card1.uid, card2.uid);
+
+    const el1 = document.querySelector(`.mem-card[data-index="${i1}"]`);
+    const el2 = document.querySelector(`.mem-card[data-index="${i2}"]`);
+    if (el1) el1.classList.add('matched');
+    if (el2) el2.classList.add('matched');
+
+    const matchedEl = document.getElementById('memMatched');
+    const matchCount = memoryState.matched.length / 2;
+    if (matchedEl) matchedEl.textContent = `${matchCount}/8`;
+
+    memoryState.flipped = [];
+    memoryState.locked = false;
+
+    if (matchCount === 8) {
+      stopMemoryTimer();
+      setTimeout(() => showMemoryResult(true), 400);
+    }
+  } else {
+    // No match — flip back
+    setTimeout(() => {
+      const el1 = document.querySelector(`.mem-card[data-index="${i1}"]`);
+      const el2 = document.querySelector(`.mem-card[data-index="${i2}"]`);
+      if (el1) { el1.classList.remove('flipped'); el1.classList.add('shake'); }
+      if (el2) { el2.classList.remove('flipped'); el2.classList.add('shake'); }
+      setTimeout(() => {
+        if (el1) el1.classList.remove('shake');
+        if (el2) el2.classList.remove('shake');
+      }, 400);
+      memoryState.flipped = [];
+      memoryState.locked = false;
+    }, 900);
+  }
+}
+
+function showMemoryResult(won) {
+  const content = document.getElementById('memoryContent');
+  const timeUsed = 60 - memoryState.timer;
+
+  content.innerHTML = `
+    <div class="game-result">
+      <div class="result-emoji">${won ? '🎉' : '⏰'}</div>
+      <h2 class="result-title ${won ? 'win' : 'lose'}" style="font-family:var(--font-display);font-size:2rem;font-weight:900;margin-bottom:8px">${won ? 'You Win!' : 'Time\'s Up!'}</h2>
+      <p class="result-score" style="color:var(--text-2);margin-bottom:8px">${won ? `Matched all 8 pairs in ${timeUsed}s with ${memoryState.moves} moves!` : 'You ran out of time. Try again!'}</p>
+      ${won ? `<p style="color:var(--text-3);font-size:0.85rem;margin-bottom:20px">Matched: ${memoryState.matched.length / 2}/8 pairs</p>` : `<p style="color:var(--text-3);font-size:0.85rem;margin-bottom:20px">Matched: ${memoryState.matched.length / 2}/8 pairs</p>`}
+      <button class="btn btn-primary" onclick="initMemory()">Play Again</button>
     </div>
-  </footer>
+  `;
 
-  <!-- ===== GAME MODALS ===== -->
+  if (won && !gameState.memory.won) {
+    onGameWon('memory');
+  }
+  gameState.memory.completed = true;
+}
 
-  <!-- QUIZ MODAL -->
-  <div class="game-modal" id="quizModal">
-    <div class="modal-backdrop" onclick="closeGame('quiz')"></div>
-    <div class="modal-panel">
-      <button class="modal-close" onclick="closeGame('quiz')">
-        <svg viewBox="0 0 24 24" fill="none"><line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-      </button>
-      <div class="modal-content" id="quizContent">
-        <!-- Rendered by JS -->
-      </div>
-    </div>
-  </div>
+// ===================================
+// ===== SPOT THE DIFFERENCE =========
+// ===================================
 
-  <!-- MEMORY MODAL -->
-  <div class="game-modal" id="memoryModal">
-    <div class="modal-backdrop" onclick="closeGame('memory')"></div>
-    <div class="modal-panel modal-panel-wide">
-      <button class="modal-close" onclick="closeGame('memory')">
-        <svg viewBox="0 0 24 24" fill="none"><line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-      </button>
-      <div class="modal-content" id="memoryContent">
-        <!-- Rendered by JS -->
-      </div>
-    </div>
-  </div>
+// Using a canvas-based approach to draw two similar scenes
+// with programmable differences
 
-  <!-- SPOT MODAL -->
-  <div class="game-modal" id="spotModal">
-    <div class="modal-backdrop" onclick="closeGame('spot')"></div>
-    <div class="modal-panel modal-panel-wide">
-      <button class="modal-close" onclick="closeGame('spot')">
-        <svg viewBox="0 0 24 24" fill="none"><line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-      </button>
-      <div class="modal-content" id="spotContent">
-        <!-- Rendered by JS -->
+const SPOT_DIFFERENCES = [
+  { x: 0.33, y: 0.48, label: 'Changed item on top-left plate' },
+  { x: 0.70, y: 0.16, label: 'Pattern missing from middle lantern' },
+  { x: 0.10, y: 0.48, label: 'Different dessert food on left edge' },
+  { x: 0.48, y: 0.78, label: 'Different selection of items on bottom plate' },
+  { x: 0.72, y: 0.76, label: 'Missing chopstick rest' },
+];
+
+let spotState = {
+  found: [],
+  wrongClicks: 0,
+  maxWrong: 5,
+};
+
+function initSpot() {
+  spotState = { found: [], wrongClicks: 0 };
+  renderSpot();
+}
+
+function renderSpot() {
+  const content = document.getElementById('spotContent');
+  const found = spotState.found.length;
+  const total = SPOT_DIFFERENCES.length;
+  const pct = (found / total) * 100;
+
+  content.innerHTML = `
+    <div class="spot-header">
+      <h2>Spot the Difference</h2>
+      <p class="spot-progress-text">Found: ${found} / ${total}</p>
+      <div class="spot-progress-bar">
+        <div class="spot-progress-fill" id="spotProgressFill" style="width:${pct}%"></div>
       </div>
     </div>
-  </div>
-
-  <!-- ===== REWARD MODAL ===== -->
-  <div class="reward-modal" id="rewardModal">
-    <div class="reward-backdrop" onclick="closeReward()"></div>
-    <div class="reward-panel" id="rewardPanel">
-      <div class="reward-confetti" id="rewardConfetti"></div>
-      <div class="reward-icon" id="rewardIcon">🍬</div>
-      <h2 id="rewardTitle">Congratulations!</h2>
-      <p id="rewardMsg">You got 1 FREE candy!</p>
-      <div class="reward-candy" id="rewardCandy">
-        <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="40" cy="40" r="30" fill="#BC002D"/>
-          <circle cx="40" cy="40" r="20" fill="white"/>
-          <circle cx="40" cy="40" r="10" fill="#BC002D"/>
-          <line x1="40" y1="10" x2="40" y2="0" stroke="#BC002D" stroke-width="6" stroke-linecap="round"/>
-          <line x1="43" y1="4" x2="50" y2="4" stroke="#BC002D" stroke-width="3" stroke-linecap="round"/>
-        </svg>
+    <div class="spot-images">
+      <div class="spot-img-wrap" id="spotLeft" onclick="spotClick(event, 'left')">
+        <img src="assets/1.png" alt="Original" id="spotImgLeft" draggable="false"/>
+        <!-- Markers for found differences on left -->
+        ${spotState.found.map(i => `
+          <div class="spot-marker correct" style="left:${SPOT_DIFFERENCES[i].x * 100}%;top:${SPOT_DIFFERENCES[i].y * 100}%"></div>
+        `).join('')}
+        <div style="position:absolute;bottom:6px;left:8px;background:rgba(0,0,0,0.5);color:white;font-size:0.7rem;padding:2px 8px;border-radius:4px">Original</div>
       </div>
-      <button class="btn btn-primary" onclick="closeReward()">Yummy! Thanks!</button>
+      <div class="spot-img-wrap" id="spotRight" onclick="spotClick(event, 'right')">
+        <img src="assets/2.png" alt="Modified" id="spotImgRight" draggable="false"/>
+        <!-- Markers for found differences on right -->
+        ${spotState.found.map(i => `
+          <div class="spot-marker correct" style="left:${SPOT_DIFFERENCES[i].x * 100}%;top:${SPOT_DIFFERENCES[i].y * 100}%"></div>
+        `).join('')}
+        <div style="position:absolute;bottom:6px;left:8px;background:rgba(0,0,0,0.5);color:white;font-size:0.7rem;padding:2px 8px;border-radius:4px">Modified</div>
+      </div>
     </div>
-  </div>
+    <p class="spot-instructions">Click on the differences you spot! Find all ${total} differences to win.</p>
+    <p class="spot-wrong-count" id="spotWrongCount">Wrong clicks: ${spotState.wrongClicks} / ${spotState.maxWrong}</p>
+    <div style="display:flex;gap:10px;justify-content:center;margin-top:12px">
+      <button class="btn btn-outline" onclick="initSpot()" style="font-size:0.85rem;padding:8px 18px">Restart</button>
+    </div>
+    <!-- Hidden clickzones for differences -->
+    <div id="spotZones" style="display:none"></div>
+  `;
+}
 
-  <script src="script.js"></script>
-</body>
-</html>
+function spotClick(event, side) {
+  const wrap = event.currentTarget;
+  const rect = wrap.getBoundingClientRect();
+  const relX = (event.clientX - rect.left) / rect.width;
+  const relY = (event.clientY - rect.top) / rect.height;
+
+  // Check if click is near any undetected difference
+  const threshold = 0.1;
+  let hit = -1;
+
+  for (let i = 0; i < SPOT_DIFFERENCES.length; i++) {
+    if (spotState.found.includes(i)) continue;
+    const d = SPOT_DIFFERENCES[i];
+    const dist = Math.sqrt(Math.pow(relX - d.x, 2) + Math.pow(relY - d.y, 2));
+    if (dist < threshold) {
+      hit = i;
+      break;
+    }
+  }
+
+  if (hit >= 0) {
+    // Correct!
+    spotState.found.push(hit);
+
+    // Add marker to both images
+    ['spotLeft', 'spotRight'].forEach(id => {
+      const container = document.getElementById(id);
+      if (container) {
+        const marker = document.createElement('div');
+        marker.className = 'spot-marker correct';
+        marker.style.cssText = `left:${SPOT_DIFFERENCES[hit].x * 100}%;top:${SPOT_DIFFERENCES[hit].y * 100}%`;
+        container.appendChild(marker);
+      }
+    });
+
+    // Update progress
+    const found = spotState.found.length;
+    const total = SPOT_DIFFERENCES.length;
+    document.querySelector('.spot-progress-text').textContent = `Found: ${found} / ${total}`;
+    document.getElementById('spotProgressFill').style.width = (found / total * 100) + '%';
+
+    if (found >= total) {
+      setTimeout(() => showSpotResult(true), 500);
+    }
+  } else {
+    // Wrong click
+    spotState.wrongClicks++;
+    document.getElementById('spotWrongCount').textContent = `Wrong clicks: ${spotState.wrongClicks} / ${spotState.maxWrong}`;
+
+    // Show wrong flash at click position
+    const marker = document.createElement('div');
+    marker.className = 'spot-wrong-flash';
+    marker.style.cssText = `left:${relX * 100}%;top:${relY * 100}%`;
+    wrap.appendChild(marker);
+    setTimeout(() => marker.remove(), 700);
+
+    if (spotState.wrongClicks >= spotState.maxWrong) {
+      setTimeout(() => showSpotResult(false), 500);
+    }
+  }
+}
+
+function showSpotResult(won) {
+  const content = document.getElementById('spotContent');
+
+  content.innerHTML = `
+    <div class="game-result">
+      <div class="result-emoji">${won ? '🔍' : '😵'}</div>
+      <h2 class="result-title ${won ? 'win' : 'lose'}" style="font-family:var(--font-display);font-size:2rem;font-weight:900;margin-bottom:8px">${won ? 'All Found!' : 'Too Many Misses!'}</h2>
+      <p class="result-score" style="color:var(--text-2);margin-bottom:8px">${won ? `You spotted all ${SPOT_DIFFERENCES.length} differences with ${spotState.wrongClicks} wrong clicks!` : `You had ${spotState.wrongClicks} wrong clicks. Only found ${spotState.found.length}/${SPOT_DIFFERENCES.length}.`}</p>
+      <button class="btn btn-primary" onclick="initSpot()" style="margin:16px auto 0">Play Again</button>
+    </div>
+  `;
+
+  if (won && !gameState.spot.won) {
+    onGameWon('spot');
+  }
+  gameState.spot.completed = true;
+}
+
+// ===== SMOOTH SCROLL FOR NAV LINKS =====
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+// ===== PAGE LOAD ANIMATION =====
+window.addEventListener('load', () => {
+  document.body.classList.add('loaded');
+});
