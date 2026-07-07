@@ -176,31 +176,31 @@ function onGameWon(type) {
 
 const quizData = [
   {
-    image: 'https://6a04719546fc04f7c2e1aca4.imgix.net/JapaneseFood/SUSHI.png?w=2000&h=2000',
+    image: 'assets/SUSHI.png',
     question: 'What is this Japanese food?',
     options: ['Dango', 'Dorayaki', 'Sushi', 'Mochi'],
     answer: 2,
   },
   {
-    image: 'https://6a04719546fc04f7c2e1aca4.imgix.net/JapaneseFood/ONIGIRI.png?w=2000&h=2000',
+    image: 'assets/ONIGIRI.png',
     question: 'What is this this food?',
     options: ['Sushi', 'Ramen', 'Takoyaki', 'Onigiri'],
     answer: 3,
   },
   {
-    image: 'https://6a04719546fc04f7c2e1aca4.imgix.net/JapaneseFood/RAMEN.png?w=2000&h=2000',
+    image: 'assets/RAMEN.png',
     question: 'This noodle soup dish is called?',
     options: ['Udon', 'Soba', 'Ramen', 'Pho'],
     answer: 2,
   },
   {
-    image: 'https://6a04719546fc04f7c2e1aca4.imgix.net/JapaneseFood/TEMPURA.png?w=2000&h=2000',
+    image: 'assets/TEMPURA.png',
     question: 'What is this traditional Japanese dish?',
     options: ['Tempura', 'Tonkatsu', 'Karaage', 'Gyoza'],
     answer: 0,
   },
   {
-    image: 'https://6a04719546fc04f7c2e1aca4.imgix.net/JapaneseFood/MOCHI.png?w=2000&h=2000',
+    image: 'assets/MOCHI.png',
     question: 'This round-shaped item is a popular Japanese?',
     options: ['Daifuku', 'Dorayaki', 'Dango', 'Wagashi'],
     answer: 2,
@@ -307,14 +307,14 @@ function renderQuizResult() {
 // ===================================
 
 const memoryImages = [
-  { id: 1, url: 'https://6a04719546fc04f7c2e1aca4.imgix.net/JapaneseFood/MISO.png?w=2000&h=2000', name: 'Miso' },
-  { id: 2, url: 'https://6a04719546fc04f7c2e1aca4.imgix.net/JapaneseFood/download?w=2000&h=2000', name: 'Takoyaki' },
-  { id: 3, url: 'https://6a04719546fc04f7c2e1aca4.imgix.net/JapaneseFood/TEMPURA.png?w=2000&h=2000', name: 'Tempura' },
-  { id: 4, url: 'https://6a04719546fc04f7c2e1aca4.imgix.net/JapaneseFood/MOCHI.png?w=2000&h=2000', name: 'Mochi' },
-  { id: 5, url: 'https://6a04719546fc04f7c2e1aca4.imgix.net/JapaneseFood/OKONOMIYAKI.png?w=2000&h=2000', name: 'Okonomiyaki' },
-  { id: 6, url: 'https://6a04719546fc04f7c2e1aca4.imgix.net/JapaneseFood/ONIGIRI.png?w=2000&h=2000', name: 'Onigiri' },
-  { id: 7, url: 'https://6a04719546fc04f7c2e1aca4.imgix.net/JapaneseFood/RAMEN.png?w=2000&h=2000', name: 'Ramen' },
-  { id: 8, url: 'https://6a04719546fc04f7c2e1aca4.imgix.net/JapaneseFood/SUSHI.png?w=2000&h=2000', name: 'Shushi' },
+  { id: 1, url: 'assets/MISO.png', name: 'Miso' },
+  { id: 2, url: 'assets/TAKOYAKI.png', name: 'Takoyaki' },
+  { id: 3, url: 'assets/TEMPURA.png', name: 'Tempura' },
+  { id: 4, url: 'assets/MOCHI.png', name: 'Mochi' },
+  { id: 5, url: 'assets/OKONOMIYAKI.png', name: 'Okonomiyaki' },
+  { id: 6, url: 'assets/ONIGIRI.png', name: 'Onigiri' },
+  { id: 7, url: 'assets/RAMEN.png', name: 'Ramen' },
+  { id: 8, url: 'assets/SUSHI.png', name: 'Shushi' },
 ];
 
 let memoryState = {
@@ -543,7 +543,7 @@ function renderSpot() {
     </div>
     <div class="spot-images">
       <div class="spot-img-wrap" id="spotLeft" onclick="spotClick(event, 'left')">
-        <img src="https://6a04719546fc04f7c2e1aca4.imgix.net/JapaneseFoodSPOT/1.png?w=700&h=875" alt="Original" id="spotImgLeft" draggable="false"/>
+        <img src="assets/1.png" alt="Original" id="spotImgLeft" draggable="false"/>
         <!-- Markers for found differences on left -->
         ${spotState.found.map(i => `
           <div class="spot-marker correct" style="left:${SPOT_DIFFERENCES[i].x * 100}%;top:${SPOT_DIFFERENCES[i].y * 100}%"></div>
@@ -551,7 +551,7 @@ function renderSpot() {
         <div style="position:absolute;bottom:6px;left:8px;background:rgba(0,0,0,0.5);color:white;font-size:0.7rem;padding:2px 8px;border-radius:4px">Original</div>
       </div>
       <div class="spot-img-wrap" id="spotRight" onclick="spotClick(event, 'right')">
-        <img src="https://6a04719546fc04f7c2e1aca4.imgix.net/JapaneseFoodSPOT/2.png?w=700&h=875" alt="Modified" id="spotImgRight" draggable="false"/>
+        <img src="assets/2.png" alt="Modified" id="spotImgRight" draggable="false"/>
         <!-- Markers for found differences on right -->
         ${spotState.found.map(i => `
           <div class="spot-marker correct" style="left:${SPOT_DIFFERENCES[i].x * 100}%;top:${SPOT_DIFFERENCES[i].y * 100}%"></div>
